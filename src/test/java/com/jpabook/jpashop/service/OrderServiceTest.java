@@ -1,12 +1,13 @@
 package com.jpabook.jpashop.service;
 
-import com.jpabook.jpashop.domain.entity.Address;
-import com.jpabook.jpashop.domain.entity.Member;
-import com.jpabook.jpashop.domain.entity.Order;
-import com.jpabook.jpashop.domain.entity.item.Book;
-import com.jpabook.jpashop.enums.OrderStatus;
-import com.jpabook.jpashop.exception.NotEnoughStockException;
-import com.jpabook.jpashop.repostiroty.OrderRepository;
+import com.jpabook.jpashop.main.domain.entity.Address;
+import com.jpabook.jpashop.main.domain.entity.Member;
+import com.jpabook.jpashop.main.domain.entity.Order;
+import com.jpabook.jpashop.main.domain.entity.item.Book;
+import com.jpabook.jpashop.main.enums.OrderStatus;
+import com.jpabook.jpashop.main.exception.NotEnoughStockException;
+import com.jpabook.jpashop.main.repostiroty.OrderRepository;
+import com.jpabook.jpashop.main.service.OrderService;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

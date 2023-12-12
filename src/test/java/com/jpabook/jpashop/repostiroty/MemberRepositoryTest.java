@@ -1,8 +1,8 @@
 package com.jpabook.jpashop.repostiroty;
 
-import com.jpabook.jpashop.domain.entity.Address;
-import com.jpabook.jpashop.domain.entity.Member;
-import com.jpabook.jpashop.service.MemberService;
+import com.jpabook.jpashop.main.domain.entity.Address;
+import com.jpabook.jpashop.main.domain.entity.Member;
+import com.jpabook.jpashop.main.service.MemberService;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
