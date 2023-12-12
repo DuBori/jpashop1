@@ -15,7 +15,7 @@ public class Member {
     @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
-    
+
     private String name;
     @Embedded
     private Address address;
@@ -25,5 +25,9 @@ public class Member {
     public Member(String name, Address address) {
         this.name = name;
         this.address = address;
+    }
+
+    public void updateName(String name) {
+        this.name = name;
     }
 }

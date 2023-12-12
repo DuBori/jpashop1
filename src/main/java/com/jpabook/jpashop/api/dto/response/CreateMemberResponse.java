@@ -1,4 +1,4 @@
-package com.jpabook.jpashop.api.controller.dto.response;
+package com.jpabook.jpashop.api.dto.response;
 
 import lombok.Data;
 

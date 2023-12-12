@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.main.service;
 
+import com.jpabook.jpashop.api.dto.response.UpdateMemberResponse;
 import com.jpabook.jpashop.main.domain.entity.Member;
 import com.jpabook.jpashop.main.repostiroty.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,10 @@ public class MemberService {
     public Member findMember(final Long id) {
         return memberRepository.find(id);
     }
-
+    @Transactional
+    public Long update(Long id, String name) {
+        Member member = memberRepository.find(id);
+        member.updateName(name);
+        return member.getId();
+    }
 }
