@@ -66,4 +66,7 @@ public class OrderService {
         return orderRepository.findAllByCriteria(orderSearch);
     }
 
+    public List<Order> findAllWithMemberDelivery() {
+        return orderRepository.findAllWithMemberDelivery();
+    }
 }

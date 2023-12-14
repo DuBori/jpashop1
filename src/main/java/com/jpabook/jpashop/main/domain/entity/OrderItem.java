@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.main.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpabook.jpashop.main.domain.entity.item.Item;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -14,7 +15,7 @@ public class OrderItem {
     @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
-
+    /*@JsonIgnore*/
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
