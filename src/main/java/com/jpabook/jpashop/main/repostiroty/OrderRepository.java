@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.main.repostiroty;
 
+import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.SimpleOrderQueryDto;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Order;
 import jakarta.persistence.EntityManager;
@@ -97,5 +98,6 @@ public class OrderRepository {
                         "join fetch o.delivery d", Order.class
         ).getResultList();
     }
+
 
 }

@@ -2,6 +2,7 @@ package com.jpabook.jpashop.api.controller;
 
 import com.jpabook.jpashop.api.dto.response.ResponseEntity;
 import com.jpabook.jpashop.api.dto.response.SimpleOrderDto;
+import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.SimpleOrderQueryDto;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Order;
 import com.jpabook.jpashop.main.service.OrderService;
@@ -45,5 +46,11 @@ public class OrderSimpleApiController {
                 .map(it -> new SimpleOrderDto(it))
                 .collect(Collectors.toList());
         return new ResponseEntity(collect);
+    }
+
+    @GetMapping("/api/v4/simple-orders")
+    public ResponseEntity ordersV4() {
+        List<SimpleOrderQueryDto> orders = orderService.findAllOrderDto();
+        return new ResponseEntity(orders);
     }
 }

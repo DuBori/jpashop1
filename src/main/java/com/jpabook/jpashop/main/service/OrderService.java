@@ -1,5 +1,7 @@
 package com.jpabook.jpashop.main.service;
 
+import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.OrderSimpleQueryRepository;
+import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.SimpleOrderQueryDto;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Delivery;
 import com.jpabook.jpashop.main.domain.entity.Member;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     private final MemberRepository memberRepository;
 
@@ -68,5 +71,9 @@ public class OrderService {
 
     public List<Order> findAllWithMemberDelivery() {
         return orderRepository.findAllWithMemberDelivery();
+    }
+
+    public List<SimpleOrderQueryDto> findAllOrderDto() {
+        return orderSimpleQueryRepository.findAllOrderDto();
     }
 }
