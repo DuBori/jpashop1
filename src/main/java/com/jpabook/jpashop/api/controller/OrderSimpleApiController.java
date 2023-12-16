@@ -2,7 +2,7 @@ package com.jpabook.jpashop.api.controller;
 
 import com.jpabook.jpashop.api.dto.response.ResponseEntity;
 import com.jpabook.jpashop.api.dto.response.SimpleOrderDto;
-import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.SimpleOrderQueryDto;
+import com.jpabook.jpashop.api.dto.response.SimpleOrderQueryDto;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Order;
 import com.jpabook.jpashop.main.service.OrderService;

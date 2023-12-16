@@ -1,7 +1,9 @@
 package com.jpabook.jpashop.main.service;
 
+import com.jpabook.jpashop.api.dto.response.OrderQueryDto;
+import com.jpabook.jpashop.main.repostiroty.order.orderQuery.OrderQueryRepository;
 import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.OrderSimpleQueryRepository;
-import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.SimpleOrderQueryDto;
+import com.jpabook.jpashop.api.dto.response.SimpleOrderQueryDto;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Delivery;
 import com.jpabook.jpashop.main.domain.entity.Member;
@@ -23,6 +25,7 @@ import java.util.List;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderSimpleQueryRepository orderSimpleQueryRepository;
+    private final OrderQueryRepository orderQueryRepository;
 
     private final MemberRepository memberRepository;
 
@@ -73,7 +76,19 @@ public class OrderService {
         return orderRepository.findAllWithMemberDelivery();
     }
 
+    public List<Order> findAllWithMemberDeliveryPaging(int offset, int limit) {
+        return orderRepository.findAllWithMemberDeliveryPaging(offset, limit);
+    }
+
     public List<SimpleOrderQueryDto> findAllOrderDto() {
         return orderSimpleQueryRepository.findAllOrderDto();
+    }
+
+    public List<Order> withItem() {
+        return orderRepository.withItem();
+    }
+
+    public List<OrderQueryDto> findOrderQueryDtos() {
+        return orderQueryRepository.findOrderQueryDtos();
     }
 }

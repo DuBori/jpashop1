@@ -1,6 +1,5 @@
 package com.jpabook.jpashop.main.repostiroty;
 
-import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.SimpleOrderQueryDto;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Order;
 import jakarta.persistence.EntityManager;
@@ -100,4 +99,23 @@ public class OrderRepository {
     }
 
 
+    public List<Order> withItem() {
+        return em.createQuery(
+                "select distinct o from Order o " +
+                        "join fetch o.member m " +
+                        "join fetch o.delivery d " +
+                        "join fetch o.orderItems oi " +
+                        "join fetch oi.item i ", Order.class
+        ).getResultList();
+    }
+
+    public List<Order> findAllWithMemberDeliveryPaging(int offset, int limit) {
+        return em.createQuery(
+                "select o from Order o " +
+                        "join fetch o.member m " +
+                        "join fetch o.delivery d", Order.class
+        ).setFirstResult(offset)
+        .setMaxResults(limit)
+        .getResultList();
+    }
 }

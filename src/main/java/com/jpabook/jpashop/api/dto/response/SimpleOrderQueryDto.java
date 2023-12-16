@@ -1,4 +1,4 @@
-package com.jpabook.jpashop.main.repostiroty.order.simpleQuery;
+package com.jpabook.jpashop.api.dto.response;
 
 import com.jpabook.jpashop.main.domain.entity.Address;
 import com.jpabook.jpashop.main.domain.entity.Order;
