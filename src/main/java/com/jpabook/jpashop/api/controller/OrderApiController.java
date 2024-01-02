@@ -1,8 +1,6 @@
 package com.jpabook.jpashop.api.controller;
 
-import com.jpabook.jpashop.api.dto.response.OrderDto;
-import com.jpabook.jpashop.api.dto.response.OrderQueryDto;
-import com.jpabook.jpashop.api.dto.response.ResponseEntity;
+import com.jpabook.jpashop.api.dto.response.*;
 import com.jpabook.jpashop.main.domain.dto.request.OrderSearch;
 import com.jpabook.jpashop.main.domain.entity.Order;
 import com.jpabook.jpashop.main.domain.entity.OrderItem;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +62,26 @@ public class OrderApiController {
     @GetMapping("/api/v4/orders")
     public ResponseEntity ordersV4() {
         return new ResponseEntity(orderService.findOrderQueryDtos());
+    }
+
+    @GetMapping("/api/v5/orders")
+    public ResponseEntity ordersV5() {
+        return new ResponseEntity(orderService.findOrderAllByDto_optimization());
+    }
+
+    @GetMapping("/api/v6/orders")
+    public ResponseEntity ordersV6() {
+        List<OrderFlatDto> orderAllByDtoFlat = orderService.findOrderAllByDto_flat();
+        List<OrderQueryDto> collect = orderAllByDtoFlat.stream()
+                .collect(Collectors.groupingBy(it -> new OrderQueryDto(it.getOrderId(), it.getName(), it.getOrderDate(), it.getOrderStatus(), it.getAddress()),
+                        Collectors.mapping(o -> new OrderItemQueryDto(o.getOrderId(), o.getItemName(), o.getOrderPrice(), o.getCount()), Collectors.toList())
+                )).entrySet().stream()
+                .map(it -> new OrderQueryDto(it.getKey().getOrderId(),
+                        it.getKey().getName(), it.getKey().getOrderDate(), it.getKey().getOrderStatus(),
+                        it.getKey().getAddress()))
+                .sorted(Comparator.comparing(OrderQueryDto::getOrderId))
+                .collect(Collectors.toList());
+        return new ResponseEntity(collect);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.main.service;
 
+import com.jpabook.jpashop.api.dto.response.OrderFlatDto;
 import com.jpabook.jpashop.api.dto.response.OrderQueryDto;
 import com.jpabook.jpashop.main.repostiroty.order.orderQuery.OrderQueryRepository;
 import com.jpabook.jpashop.main.repostiroty.order.simpleQuery.OrderSimpleQueryRepository;
@@ -90,5 +91,13 @@ public class OrderService {
 
     public List<OrderQueryDto> findOrderQueryDtos() {
         return orderQueryRepository.findOrderQueryDtos();
+    }
+
+    public List<OrderQueryDto> findOrderAllByDto_optimization() {
+        return orderQueryRepository.findOrderAllByDto_optimization();
+    }
+
+    public List<OrderFlatDto> findOrderAllByDto_flat() {
+        return orderQueryRepository.findOrderAllByDto_flat();
     }
 }
